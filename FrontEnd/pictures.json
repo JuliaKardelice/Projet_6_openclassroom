@@ -1,0 +1,144 @@
+[
+    {
+      "id": 1,
+      "title": "Abajour Tahina",
+      "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+      "categoryId": 1,
+      "userId": 1,
+      "category": {
+        "id": 1,
+        "name": "Objets"
+      }
+    },
+    {
+        "id": 2,
+        "title": "Appartement Paris V",
+        "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+        "categoryId": 1,
+        "userId": 1,
+        "category": {
+          "id": 1,
+          "name": "Appartements"
+        }
+      }
+      ,
+      {
+          "id": 3,
+          "title": "Restaurant Sushisen - Londres",
+          "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+          "categoryId": 1,
+          "userId": 1,
+          "category": {
+            "id": 1,
+            "name": "Hôtels et Restaurants"
+          }
+        }
+        ,
+        {
+            "id": 4,
+            "title": "Villa /“La Balisiere/” - Port LouisAbajour Tahina",
+            "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+            "categoryId": 1,
+            "userId": 1,
+            "category": {
+              "id": 1,
+              "name": "Hôtels et Restaurants"
+            }
+          }
+          ,
+          {
+              "id": 5,
+              "title": "Structures Thermopolis",
+              "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+              "categoryId": 1,
+              "userId": 1,
+              "category": {
+                "id": 1,
+                "name": "Objets"
+              }
+            }
+            ,
+            {
+                "id": 6,
+                "title": "Appartement Paris X",
+                "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+                "categoryId": 1,
+                "userId": 1,
+                "category": {
+                  "id": 1,
+                  "name": "Appartements"
+                }
+              }
+              ,
+              {
+                  "id": 7,
+                  "title": "Pavillon “Le coteau” - Cassis",
+                  "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+                  "categoryId": 1,
+                  "userId": 1,
+                  "category": {
+                    "id": 1,
+                    "name": "Hôtels et Restaurants"
+                  }
+                }
+                ,
+                {
+                    "id": 8,
+                    "title": "Villa Ferneze - Isola d’Elba",
+                    "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+                    "categoryId": 1,
+                    "userId": 1,
+                    "category": {
+                      "id": 1,
+                      "name": "Hôtels et Restaurants"
+                    }
+                  }
+                  ,
+                  {
+                      "id": 9,
+                      "title":"Appartement Paris XVIII",
+                      "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+                      "categoryId": 1,
+                      "userId": 1,
+                      "category": {
+                        "id": 1,
+                        "name": "Appartements"
+                      }
+                    }
+                    ,
+                    {
+                        "id": 10,
+                        "title": "Bar “Lullaby” - Paris",
+                        "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+                        "categoryId": 1,
+                        "userId": 1,
+                        "category": {
+                          "id": 1,
+                          "name": "Hôtels et Restaurants"
+                        }
+                      }
+                      ,
+                      {
+                          "id": 11,
+                          "title": "Hotel First Arte - New Delhi",
+                          "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+                          "categoryId": 1,
+                          "userId": 1,
+                          "category": {
+                            "id": 1,
+                            "name": "Hôtels et Restaurants"
+                          }
+                        }
+                        ,
+                        {
+                            "id": 12,
+                            "title": "Malt and Juniper - New York",
+                            "imageUrl": "http://localhost:5678/images/abajour-tahina1651286843956.png",
+                            "categoryId": 1,
+                            "userId": 1,
+                            "category": {
+                              "id": 1,
+                              "name": "Objets"
+                            }
+                          }           
+  ]

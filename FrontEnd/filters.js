@@ -41,3 +41,13 @@ filterAppartement.addEventListener('click',()=>{
 filterHotel.addEventListener('click',()=>{
   filterHotel.classList.toggle("btnFiltre_survol");
 });
+
+
+
+/******************* */
+
+const figurePhoto =document.createElement("figure");
+const descriptionPhoto=document.createElement("figcaption");
+
+sectionGallery.appendChild(figurePhoto);
+figurePhoto.appendChild(descriptionPhoto);
