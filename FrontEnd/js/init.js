@@ -30,8 +30,6 @@ console.log(filterList);
 filterAll.addEventListener('click',()=>{
   filterAll.classList.toggle("btnFiltre_survol");
 });
-
-
 filterObjet.addEventListener('click',()=>{
   filterObjet.classList.toggle("btnFiltre_survol");
 });
@@ -41,11 +39,27 @@ filterAppartement.addEventListener('click',()=>{
 filterHotel.addEventListener('click',()=>{
   filterHotel.classList.toggle("btnFiltre_survol");
 });
+///***RENDRE FILTRES FONCTIONNELS */
 
-
-
+[
+  {
+    "id": 1,
+    "name": "Tous"
+  },
+  {
+    "id": 2,
+    "name": "Objets"
+  },
+  {
+    "id": 3,
+    "name": "Appartements"
+  },
+  {
+    "id": 4,
+    "name": "Hôtels et Restaurants"
+  }
+]
 /******************* */
-
 const figurePhoto =document.createElement("figure");
 const descriptionPhoto=document.createElement("figcaption");
 
