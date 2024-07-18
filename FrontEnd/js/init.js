@@ -65,3 +65,6 @@ const descriptionPhoto=document.createElement("figcaption");
 
 sectionGallery.appendChild(figurePhoto);
 figurePhoto.appendChild(descriptionPhoto);
+
+
+////****IMAGE GALLERY */
