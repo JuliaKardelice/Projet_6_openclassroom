@@ -1,70 +1,69 @@
-const sectionFiltres=document.createElement("div");
-const sectionGallery=document.querySelector(".gallery");
+const filtres = document.querySelector('.filtres')
+const sectionGallery = document.querySelector(".gallery");
 
-console.log(sectionGallery);
-sectionFiltres.className=("filtres");
+// Travaux
 
-sectionGallery.insertAdjacentElement("beforebegin",sectionFiltres);
+async function showWorks(){
+  const response = await fetch('http://localhost:5678/api/works');
+  const works = await response.json();
 
-let i=0
-for (i = 0; i < 4; i++) {
-  let btnFiltre = document.createElement('button');
-  btnFiltre.className = "btnFiltre";
-  btnFiltre.id = "btnFiltre"+i;
- sectionFiltres.appendChild(btnFiltre);
+  works.forEach(work => {
+    const figure = document.createElement('figure');
+    const img = document.createElement('img');
+    const figcaption = document.createElement('figcaption');
+
+    img.src = work.imageUrl;
+    img.alt = work.title;
+
+    figcaption.innerText = work.title;
+    figure.setAttribute('data-id',categorie.id);
+    figure.appendChild(img);
+    figure.appendChild(figcaption);
+    sectionGallery.appendChild(figure);
+  })
 }
 
-let filterAll=document.getElementById("btnFiltre0");
-const filterObjet=document.getElementById("btnFiltre1");
-const filterAppartement=document.getElementById("btnFiltre2");
-const filterHotel=document.getElementById("btnFiltre3");
-filterAll.innerText="Tous";
-filterObjet.innerText= "Objets";
-filterAppartement.innerText= "Appartement";
-filterHotel.innerText="Hôtels et Restaurants";
+showWorks();
 
-const filterList=document.querySelectorAll(".filtres button");
-console.log(filterList);
-///Pourquoi le tooggle ne marche t il pas ?
+// Filtres
 
-filterAll.addEventListener('click',()=>{
-  filterAll.classList.toggle("btnFiltre_survol");
+async function showCategories(){
+  const response = await fetch('http://localhost:5678/api/categories');
+  const categories = await response.json();
+
+  const btnAll = document.createElement('button');
+  btnAll.classList.add('btnAll');
+  btnAll.innerText = "Tous";
+  btnAll.addEventListener("mouseenter",()=>{
+  btnAll.classList.toggle('btnFiltre_survol');
+  btnAll.addEventListener("mouseleave",()=>{
+  btnAll.classList.toggle('btnFiltre_survol');
+    
+  })
+    
+    
 });
-filterObjet.addEventListener('click',()=>{
-  filterObjet.classList.toggle("btnFiltre_survol");
-});
-filterAppartement.addEventListener('click',()=>{
-  filterAppartement.classList.toggle("btnFiltre_survol");
-});
-filterHotel.addEventListener('click',()=>{
-  filterHotel.classList.toggle("btnFiltre_survol");
-});
-///***RENDRE FILTRES FONCTIONNELS */
 
-[
-  {
-    "id": 1,
-    "name": "Tous"
-  },
-  {
-    "id": 2,
-    "name": "Objets"
-  },
-  {
-    "id": 3,
-    "name": "Appartements"
-  },
-  {
-    "id": 4,
-    "name": "Hôtels et Restaurants"
-  }
-]
-/******************* */
-const figurePhoto =document.createElement("figure");
-const descriptionPhoto=document.createElement("figcaption");
+  filtres.appendChild(btnAll);
 
-sectionGallery.appendChild(figurePhoto);
-figurePhoto.appendChild(descriptionPhoto);
+  categories.forEach(categorie => {
+    const button = document.createElement('button');
+    button.classList.add('btnFiltre');
+    button.setAttribute('data-id', categorie.id);
+    button.innerText = categorie.name;
+    button.addEventListener("mouseenter",()=>{
+    button.classList.toggle('btnFiltre_survol');    
+})
+button.addEventListener("mouseleave",()=>{
+  button.classList.toggle('btnFiltre_survol');
+  
+})
+;
+    filtres.appendChild(button);
+  });
+
+};
+
+showCategories();
 
 
-////****IMAGE GALLERY */
