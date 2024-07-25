@@ -34,7 +34,7 @@ async function showCategories(){
   const btnAll = document.createElement('button');
   btnAll.classList.add('btnAll');
   btnAll.innerText = "Tous";
-
+  
   btnAll.addEventListener('click', async () => {
     filterWorks(null); // Afficher tous les travaux
   });
@@ -48,7 +48,7 @@ async function showCategories(){
     button.innerText = categorie.name;
 
     button.addEventListener('click', async () => {
-      filterWorks(categorie.id); // Afficher les travaux filtrés par catégorie
+      filterdWorksByCategory(categorie.id); // Afficher les travaux filtrés par catégorie
     });
 
     filtres.appendChild(button);
@@ -56,15 +56,15 @@ async function showCategories(){
 }
 
 // Fonction de filtrage
-async function filterWorks(categoryId) {
+async function filterdWorksByCategory(categoryId) {
   const response = await fetch('http://localhost:5678/api/works');
   const works = await response.json();
 
   sectionGallery.innerHTML = ''; // Vider la galerie avant de la remplir à nouveau
 
-  const filteredWorks = categoryId ? works.filter(work => work.categoryId === categoryId) : works;
+  const filterdWorksByCategory = categoryId ? works.filter(work => work.categoryId === categoryId) : works;
 
-  filteredWorks.forEach(work => {
+  filterdWorksByCategory.forEach(work => {
     const figure = document.createElement('figure');
     const img = document.createElement('img');
     const figcaption = document.createElement('figcaption');
@@ -85,7 +85,7 @@ showWorks();
 showCategories();
 
 
-/*
+/*///effet ?
   btnAll.addEventListener("mouseenter",()=>{
   btnAll.classList.toggle('btnFiltre_survol');
   btnAll.addEventListener("mouseleave",()=>{
