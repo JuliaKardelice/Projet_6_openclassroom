@@ -1,6 +1,3 @@
-
-
-
 const filtres = document.querySelector('.filtres')
 const sectionGallery = document.querySelector(".gallery");
 
@@ -35,8 +32,10 @@ async function showCategories(){
   btnAll.classList.add('btnAll');
   btnAll.innerText = "Tous";
   
-  btnAll.addEventListener('click', async () => {
-    filterWorks(null); // Afficher tous les travaux
+  btnAll.addEventListener('click', async (e) => {
+    e.preventDefault();
+    sectionGallery.innerHTML = '';
+    showWorks(); // Afficher tous les travaux
   });
 
   filtres.appendChild(btnAll);
@@ -82,7 +81,55 @@ async function filterdWorksByCategory(categoryId) {
 
 // Afficher les travaux et les filtres au chargement de la page
 showWorks();
-showCategories();
+/*
+async function log(){
+const logIn=document.getElementById(".login");
+if connection
+add event listenner sur logout qui retire le token du lodal storage
+
+*/
+
+async function checkConnection(){
+const admin = document.querySelector('.admin');
+
+if(localStorage.getItem('token')){
+  console.log("je suis connectée");
+  admin.innerHTML = "<button>Modifier</button"; 
+
+  /// Pourquoi pas de balise fermante ?
+  
+} else {
+  showCategories();
+  console.log("je suis deconnectée");
+
+
+
+};
+
+}
+
+checkConnection();
+///Se deconnecter
+///supprimer le token du localstorage
+const logoutBtn = document.getElementById("logout");
+logoutBtn.addEventListener("click",() =>{
+  window.localStorage.removeItem("token");
+  window.location.href = "/FrontEnd/index.html";
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*///effet ?

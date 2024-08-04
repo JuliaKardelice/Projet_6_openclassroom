@@ -312,3 +312,15 @@ text-align: center;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
+.error{
+	color: red;
+}
+
+
+
+/* PAGE LOGIN */
+
+.displayNone{
+display: none;
+}
