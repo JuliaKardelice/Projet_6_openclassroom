@@ -31,8 +31,8 @@ async function showCategories(){
   const btnAll = document.createElement('button');
   btnAll.classList.add('btnAll');
   btnAll.innerText = "Tous";
-  
   btnAll.addEventListener('click', async (e) => {
+    btnAll.classList.toggle('btnFiltre_survol');
     e.preventDefault();
     sectionGallery.innerHTML = '';
     showWorks(); // Afficher tous les travaux
@@ -45,8 +45,8 @@ async function showCategories(){
     button.classList.add('btnFiltre');
     button.setAttribute('data-id', categorie.id);
     button.innerText = categorie.name;
-
     button.addEventListener('click', async () => {
+      button.classList.toggle('btnFiltre_survol');
       filterdWorksByCategory(categorie.id); // Afficher les travaux filtrés par catégorie
     });
 
@@ -82,40 +82,69 @@ async function filterdWorksByCategory(categoryId) {
 // Afficher les travaux et les filtres au chargement de la page
 showWorks();
 /*
-async function log(){
-const logIn=document.getElementById(".login");
 if connection
 add event listenner sur logout qui retire le token du lodal storage
-
 */
+const logIn=document.getElementById("login");
+const logOut = document.getElementById("logout");
+logOut.addEventListener("click",() =>{
+  window.localStorage.removeItem("token");
+  window.location.href = "/FrontEnd/index.html";
+});
+
+const logoutBtn = document.getElementById("logout");
+
+///faire disparaitre le login ???
+
+
+const admin = document.querySelector('.admin');
+const mesProjets = document.querySelector('#portfolio .project');
+
 
 async function checkConnection(){
-const admin = document.querySelector('.admin');
-
 if(localStorage.getItem('token')){
   console.log("je suis connectée");
-  admin.innerHTML = "<button>Modifier</button"; 
+  logIn.style.display = "none";  
+  mesProjets.insertAdjacentHTML("afterend", "<button> <i class=\"fas fa-pen-to-square\"></i>  modifier</button");
+  admin.innerHTML="<button  class=\"editMode\">  <i class=\"fas fa-pen-to-square\"></i> modifier</button";
+  admin.classList.add("blackLineEdition");
+  const btnModal=document.querySelector(" .admin .editMode");
+  btnModal.addEventListener('click', ()=>{
+  console.log("ouvrons la modale");
+  openModal();
+  } )
 
-  /// Pourquoi pas de balise fermante ?
+
   
-} else {
-  showCategories();
-  console.log("je suis deconnectée");
+} 
 
+
+
+else {
+  showCategories();
+  logOut.style.display = "none";
+  console.log("je suis deconnectée");
+  admin.style.display = "none";
 
 
 };
 
 }
 
+
+
+
+
 checkConnection();
 ///Se deconnecter
 ///supprimer le token du localstorage
-const logoutBtn = document.getElementById("logout");
-logoutBtn.addEventListener("click",() =>{
-  window.localStorage.removeItem("token");
-  window.location.href = "/FrontEnd/index.html";
-});
+
+
+
+
+
+
+
 
 
 
@@ -134,7 +163,7 @@ logoutBtn.addEventListener("click",() =>{
 
 /*///effet ?
   btnAll.addEventListener("mouseenter",()=>{
-  btnAll.classList.toggle('btnFiltre_survol');
+  btnAll.classList.toggle('btnFiltre_survol')});
   btnAll.addEventListener("mouseleave",()=>{
   btnAll.classList.toggle('btnFiltre_survol');
   });

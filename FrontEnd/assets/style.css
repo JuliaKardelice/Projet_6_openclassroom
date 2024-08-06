@@ -137,17 +137,6 @@ margin-bottom: 40px;
 }
 
 .btnFiltre { 
-margin:10px;
-background-color: white;
-border:#1D6154 1px solid;
-border-radius: 60px;
-color: #1D6154;
-font-family: 'Syne';
-font-size: 16px;
-padding:10px 20px 10px 20px;
-}
-
-.btnAll { 
 	margin:10px;
 	background-color: white;
 	border:#1D6154 1px solid;
@@ -157,18 +146,29 @@ padding:10px 20px 10px 20px;
 	font-size: 16px;
 	padding:10px 20px 10px 20px;
 	}
-
-.btnFiltre_survol{
-background-color:#1D6154; ;
-color:white;
-margin:10px;
-border:#1D6154 1px solid;
-border-radius: 60px;
-font-family: 'Syne';
-font-size: 16px;
-padding:10px 20px 10px 20px;
-}
-
+	
+	.btnAll { 
+		margin:10px;
+		background-color: white;
+		border:#1D6154 1px solid;
+		border-radius: 60px;
+		color: #1D6154;
+		font-family: 'Syne';
+		font-size: 16px;
+		padding:10px 20px 10px 20px;
+		}
+	
+	.btnFiltre_survol{
+	background-color:#1D6154; ;
+	color:white;
+	margin:10px;
+	border:#1D6154 1px solid;
+	border-radius: 60px;
+	font-family: 'Syne';
+	font-size: 16px;
+	padding:10px 20px 10px 20px;
+	}
+	
 .gallery {
 	width: 100%;
 	display: grid;
@@ -317,10 +317,51 @@ text-align: center;
 	color: red;
 }
 
+.contrainerprojet{
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
 
 
 /* PAGE LOGIN */
 
-.displayNone{
+.displaynone{
 display: none;
+
+}
+.blackLineEdition{
+text-decoration: none;
+background-color: black;
+color: white;
+width: 100%;
+height: 59px;
+display: flex;
+justify-content: center;
+}
+
+.blackLineEdition button {
+color: white;
+background-color: black;
+border: none;
+font-size: 18px; 
+font-family: inherit;
+}
+
+
+/* MODALE */
+
+
+/* premier plan /* Reste en place /* display: none; Cachée par défaut
+.modal1{
+	
+	position: fixed;
+	z-index: 3; 
+	width: 630px;
+	height:688px;
+}
+
+#modal .gallery{
+display: grid;
 }
