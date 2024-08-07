@@ -81,60 +81,41 @@ async function filterdWorksByCategory(categoryId) {
 
 // Afficher les travaux et les filtres au chargement de la page
 showWorks();
-/*
-if connection
-add event listenner sur logout qui retire le token du lodal storage
-*/
+
+const admin = document.querySelector('.admin');
+const mesProjets = document.querySelector('#portfolio .project');
 const logIn=document.getElementById("login");
 const logOut = document.getElementById("logout");
+
 logOut.addEventListener("click",() =>{
   window.localStorage.removeItem("token");
   window.location.href = "/FrontEnd/index.html";
 });
 
-const logoutBtn = document.getElementById("logout");
-
-///faire disparaitre le login ???
-
-
-const admin = document.querySelector('.admin');
-const mesProjets = document.querySelector('#portfolio .project');
-
-
 async function checkConnection(){
 if(localStorage.getItem('token')){
   console.log("je suis connectée");
   logIn.style.display = "none";  
-  mesProjets.insertAdjacentHTML("afterend", "<button> <i class=\"fas fa-pen-to-square\"></i>  modifier</button");
-  admin.innerHTML="<button  class=\"editMode\">  <i class=\"fas fa-pen-to-square\"></i> modifier</button";
+  admin.innerHTML="<button class=\"editMode\">  <i class=\"fas fa-pen-to-square\"></i> modifier</button";
   admin.classList.add("blackLineEdition");
+  mesProjets.insertAdjacentHTML("afterend", "<button class=\"editMode2\"> <i class=\"fas fa-pen-to-square\"></i>  modifier</button");
   const btnModal=document.querySelector(" .admin .editMode");
   btnModal.addEventListener('click', ()=>{
   console.log("ouvrons la modale");
   openModal();
-  } )
-
-
-  
+  ///deuxieme bouton essayer d'utiliser selector all
+  } 
+  )
 } 
-
-
-
 else {
   showCategories();
   logOut.style.display = "none";
   console.log("je suis deconnectée");
   admin.style.display = "none";
 
-
 };
 
 }
-
-
-
-
-
 checkConnection();
 ///Se deconnecter
 ///supprimer le token du localstorage

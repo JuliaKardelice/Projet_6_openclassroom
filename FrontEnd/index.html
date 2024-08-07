@@ -49,7 +49,9 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<div class="contrainerprojet"><h2 class="project">Mes Projets</h2></div>
+		<div class="contrainerprojet">
+			<h2 class="project">Mes Projets</h2>
+		</div>
 
 		<div class="filtres">
 			
@@ -74,26 +76,26 @@
 			<input type="submit" value="Envoyer">
 		</form>
 	</section>
+	
+<div class="overlay" id="overlay"></div> 
 
 <aside class="modal" id="myModal">
 	<div class="modal-content">
 	<div class="modal-one">
 		<span class="close">&times;</span>
-		<h2 class="blackTxt"> Galerie Photo </h2>
+		<h2 id="titlemodal"> Galerie Photo </h2>
 		<section class="gallery">
 			<figure>
 				<img src="./assets/images/sophie-bluel.png" alt="">
 			</figure>
 		</section>
-			<div class="bottom">
-				<input type="submit" value="Envoyer une photo">
-			</div>
+			
+		<input type="submit" value="Envoyer une photo">
 		</div>
 			<div class="modal-two" id="js-modal-add-project">
 				<a href="#"><i class="fa-solid fa-xmark js-modal-close"></i></a>
 				<a href="#"><i class="fa-solid fa-arrow-left js-modal-return"></i></a>
 				<p id="titleAddPhoto">Ajout photo</p>
-				
 			</div>
 	</div>
 </aside>

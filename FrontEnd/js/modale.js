@@ -1,36 +1,45 @@
+
+
 const modal=document.getElementById("myModal");
 const btnModal=document.querySelector(".admin .editMode");
-console.log(btnModal);
-
+const overlay = document.getElementById("overlay");
+const span = modal.querySelector(".close");
 
 function openModal(){
     console.log("pour ouvrir la modale");
     modal.style.display = "block";
-    /////showWorks();
-
-    ////fermeture modale
-    const span = modal.querySelector(".close");
+    overlay.style.display = "block";
     span.addEventListener('click',()=>{
         modal.style.display = "none";
+        overlay.style.display = "none";
+            }
+        )
+    };
+function closeModal(){
+    span.addEventListener('click',()=>{
+        modal.style.display = "none";
+        overlay.style.display = "none";
+            }
+        );
+    window.addEventListener('click',(event)=>{
+            if (event.target === modal) {
+                console.log("je suis en dehors de la modal"); ///cela ne semble pas marcher ?
+                modal.style.display = "none";
+                overlay.style.display = "none";
+            }
+        });
+        
     }
-    );
-    window.addEventListener('click',()=>{
-        if (e.target == modal) {
-            modal.style.display = "none";
-        }
-    })
-};
 
+///contenu modal
+////
 const modalGallery=modal.querySelector(".modal .gallery")
-
-
-// Vide le contenu actuel de la zone où les projets seront affichés.
 modalGallery.innerHTML = "";
 
-// Boucle à travers chaque projet et crée un élément "figure" pour l'affichage.
-works.forEach((project) => {
-  // Appelle la fonction "createFigure" pour chaque projet.
-  const figure = createFigureModale(project);
-  // Afficher le projet
- modalGallery.appendChild(figure);}
-)
+async function contentGalleryModal () {
+const response = await fetch('http://localhost:5678/api/works');
+const works = await response.json();
+
+const figure = document.createElement('figure');
+const img = document.createElement('img');
+}

@@ -129,6 +129,15 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+#portfolio .contrainerprojet{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+#portfolio .contrainerprojet button{
+background-color:transparent;
+border:none;
+}
 .filtres {
 display: flex;
 flex-direction: row;
@@ -317,11 +326,7 @@ text-align: center;
 	color: red;
 }
 
-.contrainerprojet{
-display: flex;
-flex-direction: row;
-justify-content: center;
-}
+
 
 
 
@@ -329,7 +334,6 @@ justify-content: center;
 
 .displaynone{
 display: none;
-
 }
 .blackLineEdition{
 text-decoration: none;
