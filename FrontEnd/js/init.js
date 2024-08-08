@@ -1,5 +1,6 @@
 const filtres = document.querySelector('.filtres')
 const sectionGallery = document.querySelector(".gallery");
+const galleryModal = document.querySelector('.gallery-modal');
 
 // Travaux
 
@@ -21,18 +22,50 @@ async function showWorks(){
     figure.appendChild(figcaption);
     sectionGallery.appendChild(figure);
   });
-}
+
+  works.forEach(work => {
+    const figure = document.createElement('figure');
+    const img = document.createElement('img');
+    const btnDeletePhoto=document.createElement('button');
+    btnDeletePhoto.classList.add("btnDeletePhoto");
+    btnDeletePhoto.innerHTML= "<i class=\"fa-solid fa-trash-can\"></i>"
+    img.src = work.imageUrl;
+    img.alt = work.title;
+    figure.appendChild(img);
+    figure.appendChild(btnDeletePhoto);
+    galleryModal.appendChild(figure);
+    function deleteWork(){
+      console.log("supprimons les travauw");
+      figure.remove();
+      };
+    btnDeletePhoto.addEventListener('click',()=>{
+    console.log("je vais activier ma fonction delete")
+    deleteWork()
+    })
+  
+    })
+
+  };
+
+
 
 // Filtres
 async function showCategories(){
   const response = await fetch('http://localhost:5678/api/categories');
   const categories = await response.json();
 
+  const removeActiveClass = () => {
+    document.querySelectorAll('.btnFiltre_survol').forEach(btn => btn.classList.remove('btnFiltre_survol'));
+  };
+
   const btnAll = document.createElement('button');
-  btnAll.classList.add('btnAll');
+  btnAll.classList.add('btnAll', 'btnFiltre');
   btnAll.innerText = "Tous";
+
   btnAll.addEventListener('click', async (e) => {
-    btnAll.classList.toggle('btnFiltre_survol');
+    //btnAll.classList.toggle('btnFiltre_survol');
+    removeActiveClass();
+    btnAll.classList.add('btnFiltre_survol');
     e.preventDefault();
     sectionGallery.innerHTML = '';
     showWorks(); // Afficher tous les travaux
@@ -45,12 +78,15 @@ async function showCategories(){
     button.classList.add('btnFiltre');
     button.setAttribute('data-id', categorie.id);
     button.innerText = categorie.name;
+
     button.addEventListener('click', async () => {
-      button.classList.toggle('btnFiltre_survol');
+      removeActiveClass();
+      button.classList.add('btnFiltre_survol'); // On ajoute la classe sur le bouton cliqué
       filterdWorksByCategory(categorie.id); // Afficher les travaux filtrés par catégorie
     });
 
     filtres.appendChild(button);
+
   });
 }
 
@@ -98,13 +134,13 @@ if(localStorage.getItem('token')){
   logIn.style.display = "none";  
   admin.innerHTML="<button class=\"editMode\">  <i class=\"fas fa-pen-to-square\"></i> modifier</button";
   admin.classList.add("blackLineEdition");
-  mesProjets.insertAdjacentHTML("afterend", "<button class=\"editMode2\"> <i class=\"fas fa-pen-to-square\"></i>  modifier</button");
-  const btnModal=document.querySelector(" .admin .editMode");
+  mesProjets.insertAdjacentHTML("afterend", "<button class=\"editMode\"> <i class=\"fas fa-pen-to-square\"></i>  modifier</button");
+  const btnModal=document.querySelector("#portfolio .editMode");
   btnModal.addEventListener('click', ()=>{
-  console.log("ouvrons la modale");
-  openModal();
-  ///deuxieme bouton essayer d'utiliser selector all
-  } 
+    console.log("ouvrons la modale");
+    openModal();
+    ///deuxieme bouton essayer d'utiliser selector all
+    } 
   )
 } 
 else {

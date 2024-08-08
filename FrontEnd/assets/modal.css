@@ -2,18 +2,50 @@
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  left: 30em;
-  top: 10em;
-  width: 400px; /* Full width */
-  height: 500px; /* Full height */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%; /* Full width */
+  height: 600px;
   overflow: auto; /* Enable scroll if needed */
   background-color: #ffffff; /* Fallback color */
   padding: 20px;
   border-radius: 10px;
-  border: #000000 solid 1px;
-
 }
 
+
+.gallery-modal {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}
+
+.gallery-modal figure{
+  width: 100%;
+  position: relative;
+}
+
+.gallery-modal figure img{
+  width: 100%;
+}
+
+.modal .btnDeletePhoto{
+  border: none;
+  background-color:black;
+  position: absolute;
+  top:5px;
+  right:4px;
+  z-index: 3;
+  } 
+
+.gallery-modal i{
+font-size: 15px;
+color: white;
+margin:4px 0px 4px 0px;
+
+}
 .overlay {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -28,11 +60,22 @@
 .modal input{
 display: flex;
 justify-content: center;
+border: none;
+color: rgb(255, 255, 255);
+position: fixed;
+right: 40px;
+left: 40px;
+bottom: 10px;
+padding: 7px;
+
 }
+
 
 .modal h2{
   text-align: center;
-  color: black;
+  color: rgb(0, 0, 0);
+  font-weight:lighter;
+  padding-bottom: 10px;
 }
 
 .modal .gallery{
@@ -79,3 +122,7 @@ position: absolute;
 
 
 }
+
+
+
+/*MODAL TWO*/

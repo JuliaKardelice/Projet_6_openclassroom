@@ -1,9 +1,16 @@
 
 
 const modal=document.getElementById("myModal");
-const btnModal=document.querySelector(".admin .editMode");
+const btnModal=document.querySelector(".editMode");
 const overlay = document.getElementById("overlay");
 const span = modal.querySelector(".close");
+const btnAddPhoto = document.querySelector('.add-photo');
+const modalOne = document. querySelector('.modal-one');
+const modalTwo = document.querySelector('.modal-two');
+const btnBack = document.querySelector('.btn-back');
+
+
+
 
 function openModal(){
     console.log("pour ouvrir la modale");
@@ -22,24 +29,23 @@ function closeModal(){
             }
         );
     window.addEventListener('click',(event)=>{
-            if (event.target === modal) {
-                console.log("je suis en dehors de la modal"); ///cela ne semble pas marcher ?
-                modal.style.display = "none";
-                overlay.style.display = "none";
-            }
-        });
+        if (event.target === modal) {
+            console.log("je suis en dehors de la modal"); ///cela ne semble pas marcher ?
+            modal.style.display = "none";
+            overlay.style.display = "none";
+        }
+    });
         
-    }
-
-///contenu modal
-////
-const modalGallery=modal.querySelector(".modal .gallery")
-modalGallery.innerHTML = "";
-
-async function contentGalleryModal () {
-const response = await fetch('http://localhost:5678/api/works');
-const works = await response.json();
-
-const figure = document.createElement('figure');
-const img = document.createElement('img');
 }
+
+btnAddPhoto.addEventListener('click', () => {
+    modalTwo.style.display = 'block';
+    modalOne.style.display = 'none';
+})
+
+btnBack.addEventListener('click', () => {
+    modalTwo.style.display = 'none';
+    modalOne.style.display = 'block';
+})
+
+
