@@ -9,11 +9,9 @@ const modalOne = document. querySelector('.modal-one');
 const modalTwo = document.querySelector('.modal-two');
 const btnBack = document.querySelector('.btn-back');
 
-
-
-
 function openModal(){
     console.log("pour ouvrir la modale");
+    modalOne.style.display = 'block';
     modal.style.display = "block";
     overlay.style.display = "block";
     span.addEventListener('click',()=>{
@@ -47,5 +45,3 @@ btnBack.addEventListener('click', () => {
     modalTwo.style.display = 'none';
     modalOne.style.display = 'block';
 })
-
-

@@ -24,6 +24,7 @@ async function showWorks(){
   });
 
   works.forEach(work => {
+
     const figure = document.createElement('figure');
     const img = document.createElement('img');
     const btnDeletePhoto=document.createElement('button');
@@ -31,11 +32,12 @@ async function showWorks(){
     btnDeletePhoto.innerHTML= "<i class=\"fa-solid fa-trash-can\"></i>"
     img.src = work.imageUrl;
     img.alt = work.title;
+
     figure.appendChild(img);
     figure.appendChild(btnDeletePhoto);
     galleryModal.appendChild(figure);
     function deleteWork(){
-      console.log("supprimons les travauw");
+      console.log("supprimons les travaux");
       figure.remove();
       };
     btnDeletePhoto.addEventListener('click',()=>{
