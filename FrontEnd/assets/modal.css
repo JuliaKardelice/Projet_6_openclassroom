@@ -39,6 +39,10 @@
   right:4px;
   z-index: 3;
   } 
+.modal-one{
+display: flex;
+flex-direction: column;
+}
 
 .gallery-modal i{
 font-size: 15px;
@@ -58,8 +62,7 @@ margin:4px 0px 4px 0px;
   }
   
 .modal input{
-display: flex;
-justify-content: center;
+
 border: none;
 color: rgb(255, 255, 255);
 position: fixed;
@@ -67,6 +70,7 @@ right: 40px;
 left: 40px;
 bottom: 10px;
 padding: 7px;
+
 
 }
 
@@ -86,7 +90,6 @@ grid-template-columns: (5, 1fr);
 grid-template-rows: (3, 1fr);
 grid-column-gap: 5px;
 grid-row-gap: 5px;
-border-bottom:1px solid #B3B3B3 ;
 padding-bottom: 46px;
 width: 420px;                        
 }
@@ -116,13 +119,66 @@ width: 420px;
     cursor: pointer;
 }
 
-.modal-two{
-display: none;
-position: absolute;
-
-
-}
-
-
 
 /*MODAL TWO*/
+
+.modal-two{
+  display: none;
+  
+  }
+.btn-add{
+background-color: inherit;
+border: none;
+border-radius: 5px;
+background-color:#1D6154; ;
+color:white;
+}
+.modal-two h3{
+text-align: center;
+font-size: 18px;
+color: rgb(0, 0, 0);
+font-weight:lighter;
+padding-bottom: 10px;
+  }
+  
+  
+  
+  
+  .btn-back{
+  border: none;
+  background-color: inherit;
+  }
+
+  .window-add{
+  padding: 50px;
+  border-radius: 5px;
+  background-color:#E8F1F6;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30px;
+  }
+
+
+  .window-add i {
+  color:#CBD6DC;
+  font-size: 60px;
+  text-align: center;
+  }
+  .btn-add{
+  margin:10px 100px 10px 100px;
+  padding: 10px 20px 10px 20px;
+  border: none;
+  border-radius: 50px;
+  background-color:#CBD6DC;
+  color:#306685;
+  font-size: 15px;
+  }
+
+  .window-add p {
+  text-align: center;
+  font-weight: 100;
+  font-size: 12px;
+  }
+
+  

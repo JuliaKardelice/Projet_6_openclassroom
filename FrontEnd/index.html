@@ -92,9 +92,28 @@
 			</div>
 		</div>
 		<div class="modal-two" id="js-modal-add-project">
-			<a href="#"><i class="fa-solid fa-xmark js-modal-close"></i></a>
+
 			<button class="btn-back"><i class="fa-solid fa-arrow-left js-modal-return"></i></button>
-			<p id="titleAddPhoto">Ajout photo</p>
+			<h3 id="titleAddPhoto">Ajout photo</h3>
+			<div class="window-add">
+			<i class="fa-regular fa-image"></i>
+			<button id="upload" class="btn-add"> + Ajouter photo</button>
+			<p> jpg.png : 4mo max</p>
+			</div>
+		
+			<form action="#" method="post" class="loginpart">
+				<div class="mailpart">
+				  <label for="mail">Titre</label>
+				  <input type="email" id="mail" name="user_email" required/>
+				  <textarea name="message" id="message"></textarea>
+				</div>
+				<div class="passwordpart">
+				  <label for="name">Catégorie</label>
+				  <textarea name="message" id="message"></textarea>
+				<input class="add-photo" type="submit" value="Valider">
+				
+				
+			</form>
 		</div>
 	</aside>
 	

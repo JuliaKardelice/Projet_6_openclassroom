@@ -23,31 +23,10 @@ async function showWorks(){
     sectionGallery.appendChild(figure);
   });
 
-  works.forEach(work => {
-
-    const figure = document.createElement('figure');
-    const img = document.createElement('img');
-    const btnDeletePhoto=document.createElement('button');
-    btnDeletePhoto.classList.add("btnDeletePhoto");
-    btnDeletePhoto.innerHTML= "<i class=\"fa-solid fa-trash-can\"></i>"
-    img.src = work.imageUrl;
-    img.alt = work.title;
-
-    figure.appendChild(img);
-    figure.appendChild(btnDeletePhoto);
-    galleryModal.appendChild(figure);
-    function deleteWork(){
-      console.log("supprimons les travaux");
-      figure.remove();
-      };
-    btnDeletePhoto.addEventListener('click',()=>{
-    console.log("je vais activier ma fonction delete")
-    deleteWork()
-    })
-  
-    })
+ 
 
   };
+
 
 
 
@@ -130,7 +109,7 @@ logOut.addEventListener("click",() =>{
   window.location.href = "/FrontEnd/index.html";
 });
 
-async function checkConnection(){
+async function checkConnection(token){
 if(localStorage.getItem('token')){
   console.log("je suis connectée");
   logIn.style.display = "none";  
@@ -140,6 +119,7 @@ if(localStorage.getItem('token')){
   const btnModal=document.querySelector("#portfolio .editMode");
   btnModal.addEventListener('click', ()=>{
     console.log("ouvrons la modale");
+    galleryModal.innerHTML='';
     openModal();
     ///deuxieme bouton essayer d'utiliser selector all
     } 
