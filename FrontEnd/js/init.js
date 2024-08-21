@@ -21,6 +21,7 @@ async function showWorks(){
     figure.appendChild(img);
     figure.appendChild(figcaption);
     sectionGallery.appendChild(figure);
+    
   });
 
  
@@ -137,17 +138,6 @@ else {
 checkConnection();
 ///Se deconnecter
 ///supprimer le token du localstorage
-
-
-
-
-
-
-
-
-
-
-
 
 
 

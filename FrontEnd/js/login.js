@@ -4,6 +4,9 @@ btnSubmit.addEventListener('click', (e) => {
     e.preventDefault();
 
     let email = document.getElementById('mail').value;
+
+    console.log(email);
+    
     let password = document.getElementById('password').value;
 
     fetch('http://localhost:5678/api/users/login', {
@@ -18,6 +21,8 @@ btnSubmit.addEventListener('click', (e) => {
     })
     .then(function(response){
         if(!response.ok){
+            console.log(response);
+            
             document.querySelector('.error').innerText = 'Email ou mot de passe incorrect.';
         } else {
             response.json().then(function(data){

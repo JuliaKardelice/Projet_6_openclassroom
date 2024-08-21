@@ -79,49 +79,48 @@
 		
 	<div class="overlay" id="overlay"></div> 
 	
-
-
 	
 	<aside class="modal" id="myModal">
 		<div class="modal-content">
-		<div class="modal-one">
 			<span class="close">&times;</span>
+			<div class="modal-one" id="js-modal-change-gallery">
 			<h2 id="titlemodal"> Galerie Photo </h2>
 			<div class="gallery-modal"></div>
-			<input class="add-photo" type="submit" value="Ajouter une photo">
+			<div class="add">
+					<div class="grey-line"></div>
+					<input class="add-photo" type="submit" value="Ajouter une photo">
 			</div>
-		</div>
-		<div class="modal-two" id="js-modal-add-project">
 
-			<button class="btn-back"><i class="fa-solid fa-arrow-left js-modal-return"></i></button>
-			<h3 id="titleAddPhoto">Ajout photo</h3>
+			</div>
 
-		
-			<form class="upload-form" method="post">
-				<div class="window-add">
-					<i class="fa-regular fa-image"></i>
-					<button  class="btn-add"> + Ajouter photo</button>
-					<input id="upload" class="add-photo" type="file" value="Valider">
-					<p> jpg.png : 4mo max</p>
+			<div class="modal-two" id="js-modal-add-project">
+			<button class="btn-back">
+				<i class="fa-solid fa-arrow-left js-modal-return"></i>
+			</button>
+			<section class="modal-two-content">
+			<h2 id="titleAddPhoto">Ajout photo</h2>
+				<form class="modal-form">
+					<div class="select-photo">
+						<div class="imageFormDisplay">
+							<img id="imgPreview" src="./assets/images/abajour-tahina.png" alt="imagePreview">
+							<div class="remove"> <i class="fa-solid fa-xmark"> </i></div>
+						</div>
+						<i class="fa-sharp fa-regular fa-image"></i>
+						<input class="file-upload" value="+ Ajouter photo"> ///ici s'ajoute le click
+						<input id="photo-input" type="file" name="photo-input" accept=".jpg, .jpeg, .png, .webp" onchange="changeImage(event)"> 
+						<p class = "fileFormat">jpg, png : 4mo max</p>	
 					</div>
-				<div class="choice-title">
-				  <label for="mail">Titre</label>
-				  <input type="name" id="title" name="user_email" />
-				  <textarea name="message" id="message"></textarea>
-				</div>
-				<div class="choice-category">
-					<label for="category-select">Catégories :</label>
-					<select name="category-choice" id="category-select">
-						<option id="category"><i class="fa-solid fa-chevron-down"></i></option>
-						<option id="objects"  value="Appartements">Objects</Object>s</option>
-						<option id="appartements"  value="Appartements">Appartements</option>
-						<option id="hotel et restaurants"value="hamster">Hôtels et restaurants</option>
-						<option value="Autres">Autres</option>
-					  </select>
-					  <input class="add-photo" type="submit" value="Valider">
-				</div>
+					
+				<label for="title-photo">Titre</label>
+				<input type="text" name="title" id="new-title">
+				<label for="categories">Catégorie</label>
+				<select id="categories" name="categories">
 				
-			</form>
+				</select>
+				<p id="error-message-modal"></p>
+				<input id="validerButton" type="submit" value="Valider"/>
+				</form>
+			</div>
 		</div>
 	</aside>
 	

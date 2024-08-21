@@ -1,5 +1,36 @@
+
+.overlay {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.402); /* Black with opacity */
+	z-index: 1; /* Behind the modal */
+  }
+  
+  .close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+  
+  }
+  
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+/* Stay in place */
+
+
 .modal {
-  display: none; /* Hidden by default */
+  display: none;
+  overflow: hidden;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 50%;
@@ -12,15 +43,57 @@
   padding: 20px;
   border-radius: 10px;
 }
-
-
 .gallery-modal {
-  width: 100%;
+  height: calc(100% - 80px); /* Adjust the height to make room for the button */
+  padding: 40px 70px 0px 70px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 15px;
   grid-row-gap: 15px;
+  overflow-y: auto;
 }
+
+.modal .add {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px; /* Add space between gallery and button */
+}
+
+.grey-line {
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.add-photo {
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+/* Stay in place */
+
+
+
+.modal-one{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  }
+
+.modal h2{
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 26px;
+    font-family: 'Work Sans' ;
+    padding-bottom: 10px;
+  }
+  
 
 .gallery-modal figure{
   width: 100%;
@@ -39,10 +112,6 @@
   right:4px;
   z-index: 3;
   } 
-.modal-one{
-display: flex;
-flex-direction: column;
-}
 
 .gallery-modal i{
 font-size: 15px;
@@ -50,36 +119,16 @@ color: white;
 margin:4px 0px 4px 0px;
 
 }
-.overlay {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.402); /* Black with opacity */
-	z-index: 1; /* Behind the modal */
-  }
-  
+
 .modal input{
 
 border: none;
-color: rgb(255, 255, 255);
-position: fixed;
 right: 40px;
 left: 40px;
 bottom: 10px;
 padding: 7px;
+text-align: center;
 
-
-}
-
-
-.modal h2{
-  text-align: center;
-  color: rgb(0, 0, 0);
-  font-weight:lighter;
-  padding-bottom: 10px;
 }
 
 .modal .gallery{
@@ -105,19 +154,7 @@ width: 420px;
 	height: auto;
 }
 
-.close {
-  color: #000000;
-  float: right;
-  font-size: 28px;
 
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 
 /*MODAL TWO*/
@@ -138,18 +175,20 @@ text-align: center;
 font-size: 18px;
 color: rgb(0, 0, 0);
 font-weight:lighter;
-padding-bottom: 10px;
   }
   
+.modal-two-content{
+
+padding: 0px 90px 0px 90px;
+}
   
   
-  
-  .btn-back{
+.btn-back{
   border: none;
   background-color: inherit;
   }
 
-  .window-add{
+.window-add{
   padding: 50px;
   border-radius: 5px;
   background-color:#E8F1F6;
@@ -159,11 +198,12 @@ padding-bottom: 10px;
   }
 
 
-  .window-add i {
+.window-add i {
   color:#CBD6DC;
   font-size: 60px;
   text-align: center;
-  }
+}
+
   .btn-add{
   margin:10px 100px 10px 100px;
   padding: 10px 20px 10px 20px;
@@ -185,29 +225,155 @@ padding-bottom: 10px;
   flex-direction: column;
   margin:80px;
   gap:50px;
-  position: relative;
+  }
+	.modal-two form {
+		text-align: left;
+		margin-top:30px;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.modal-two input {
+		height: 50px;
+		font-size: 1.2em;
+		border: none;
+		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	}
+	.modal-two label {
+		margin: 2em 0 1em 0;
+	}
+
+  .modal-two select {
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
   }
 
-  .modal-two input {
-		font-family: 'Syne';
-		font-weight: 700;
-		color: white;
-		background-color: #1D6154;
-		margin : 2em auto ;
-		width: 180px;
-		text-align: center;
-		border-radius: 60px ;
+  .modal-two option {
+    height: 30px;
+    }
+ .modal-two  textarea {
+		border: none;
+		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	}
+
+	.error{
+		color: red;
+	}
+	
+#modal-validation{
+border: none;
+color: rgb(255, 255, 255);
+
+right: 40px;
+left: 40px;
+bottom: 10px;
+padding: 7px;
+
 
   }
-  .choice-title{
+  #validerButton.green-button {
+    background-color: #1D6154;
+    color: white
+    }
+  
+  .select-photo {
+    background: #E8F1F7;
+    border-radius: 3px;
     display: flex;
-  flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
   }
-  .category{
+  
+  .select-photo > p {
+    text-align: center;
+    padding-bottom: 20px;
+    color: #444;
+    text-align: center;
+    font-family: Work Sans;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+  }
+  .select-photo > i {
+    color: #B9C5CC;
+    font-size: 50px;
     display: flex;
-  flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 15px;
+  
   }
+  
+  .imageFormDisplay{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .imageFormDisplay > img {
+    height: 152px;
+  }
+  .remove{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  
+  .file-upload {
+    background: #CBD6DC;
+    border-radius: 50px;
+    text-align: center;
+    color: #306685;
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 173px;
+    height: 36px;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .jpg,.jpeg, .png, .webp  {
+    color: #444;
+    text-align: center;
+    font-family: Work Sans;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+      
+  #photo-input {
+    display: none;
+  } 
+  
+  #title-photo {	
+    font-family: 'Work Sans';
+    padding-left: 20px;
+  }
+  
+  
+  #error-message-modal {
+    color: red;
+    border: 0.5px solid #B3B3B3;
+  }
+  
+  .editer{
+    margin-top: 5px;
+  }
+/*
 
-  .modal-two select{
-    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-  }
+
+
+
+
+
+PENSER À LA DEFORMATION DE LA MODALE
+UTILISER max-heigt et max-widht
+Ou utiliser unité 

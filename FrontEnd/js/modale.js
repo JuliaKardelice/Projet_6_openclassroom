@@ -4,17 +4,16 @@ const modal=document.getElementById("myModal");
 const btnModal=document.querySelector(".editMode");
 const overlay = document.getElementById("overlay");
 const span = modal.querySelector(".close");
-const btnModalAddPhoto = document.querySelector('.add-photo');
+const btnAddPhoto = document.querySelector('.add-photo');
 const modalOne = document. querySelector('.modal-one');
 const modalTwo = document.querySelector('.modal-two');
 const btnBack = document.querySelector('.btn-back');
 const modalGallery=document.querySelector('titlemodal');
 
-console.log(btnModalAddPhoto);
 
 async function openModal(){
     const response = await fetch('http://localhost:5678/api/works');
-    const works = await response.json(); 
+    const works = await response.json();
     modalOne.style.display = 'block';
     modal.style.display = "block";
     overlay.style.display = "block";
@@ -30,16 +29,11 @@ async function openModal(){
         figure.appendChild(img);
         figure.appendChild(btnDeletePhoto);
         galleryModal.appendChild(figure);
-        console.log(galleryModal);
-        
         /// POUR SUPPRIMER LES TRAVAUX AVEC LES ICONES
         function deleteWork(){
         figure.remove();
-        console.log(galleryModal);
-        return works;
         };
         btnDeletePhoto.addEventListener('click',()=>{
-        
         deleteWork()
             }
         );
@@ -74,8 +68,8 @@ function closeModal(){
     ;
         
 }
-///////////////SECOND MODAL
-btnModalAddPhoto.addEventListener('click', () => {
+
+btnAddPhoto.addEventListener('click', () => {
     modalTwo.style.display = 'block';
     modalOne.style.display = 'none';
     galleryModal.innerHTML=''; //// ceci me permet de vider la galerie
@@ -85,158 +79,94 @@ btnBack.addEventListener('click', () => {
     modalTwo.style.display = 'none';
     modalOne.style.display = 'block';
     openModal()  ///revenir à la gallery de base
+
+
    
 });
-async function uploadNewWorks(work,category) {
-const modalFormData=document.querySelector('.upload-form"');
-const btnAddNewPhoto=document.querySelector('.btn-add');
 
 
-let title = document.getElementById('title').value;
-let category = document.getElementById('category').value;
-modal: JSON.stringify({
-  "title": title,
-  "categor": category
-})
-}
-btnAddNewPhoto.addEventListener('click',()=>{
-console.log('pour ajouter un nouveau fichier')
+
+////MODALE TWO
+const btnUpload=document.querySelector(".file-upload");
+const validationNewWork=document.getElementById("validerButton")
+const newWorkTitle=document.getElementById("new-title").value;
+btnUpload.addEventListener('click',()=>{
+  console.log("ici pour ajouter la nouvelle image");
+  })
+
+async function addNewWork() {
+ /* const formData = new FormData();
+  const response = await fetch('http://localhost:5678/api/works', {
+    method: 'POST',
+    body: formData // Envoie le FormData contenant les données du travail et le fichier image
   });
-const NewPhotoArea=document.querySelector('window-add');
-const figure = document.createElement("figure");
-figure.setAttribute("id", "figureModale" + work.id);
-figure.innerHTML("<img class=\"newImg\” ");
-document.querySelector(".newImg").setAttribute("alt");
+  */
+  btnUpload.addEventListener('click',()=>{
+    console.log("ici pour ajouter la nouvelle image");
+    })
+};
 
-NewPhotoArea.appendChild(figure);
-
-function createFigureModale(work) {
-  // On crée un élément HTML de type figure
-  const figure = document.createElement("figure");
-  figure.setAttribute("id", "figureModale" + work.id);
-  // On crée un élément HTML de type img et on lui attribue sa source et un texte alternatif
-  const img = document.createElement("img");
-  img.src = work.imageUrl;
-  img.alt = work.title;
-  // On crée un élément HTML de type figcaption pour le titre de l'image et on lui attribue le texte de la légende
-  const figcaption = document.createElement("figcaption");
-  figcaption.textContent = "éditer";
-  figcaption.className = "editer";
-  //Ajouter l'icon trash et aussi un action listener dnas lequel tu affiche l'id de l'element
-  // Crée un élément HTML de type i pour l'icône de suppression
-  const deleteIcon = document.createElement("i");
-  deleteIcon.className = "fas fa-trash-alt delete-icon";
-  // Ajoute un gestionnaire d'événement pour la suppression lorsque l'icône est cliquée
-  deleteIcon.addEventListener("click", function () {
-    const value = confirm(
-      "Etes vous sur de bien vouloir supprimer le projet de numero:" +
-        work.id +
-        " ?"
-    );
-    if (value) {
-      // Appelle une fonction de suppression en utilisant l'ID de l'élément work
-      deleteWork(work.id);
-    }
-  });
-  // On ajoute l'élément img à l'élément figure
-  figure.appendChild(img);
-  // On ajoute l'élément figcaption à l'élément figure
-  figure.appendChild(figcaption);
-  // On ajoute l'élément sdeleteIcon à l'élément figure
-  figure.appendChild(deleteIcon);
-
-  return figure;
-}
+addNewWork()
 /*
-function changeImage(e) {
-  // Récupérer l'élément d'image avec l'ID "imgPreview"
-  const image = document.getElementById("imgPreview");
-  // Récupérer l'élément d'affichage du formulaire d'image
-  const imageFormDisplay = document.querySelector(".imageFormDisplay");
-  // Récupérer l'icône d'image avec la classe "fa-image"
-  const faimage = document.querySelector(".fa-image");
-  // Récupérer l'élément de téléchargement de fichier avec la classe "file-upload"
-  const fileUpload = document.querySelector(".file-upload");
-  // Récupérer l'élément d'entrée de photo par son ID
-  const photoInput = document.querySelector("#photo-input");
-  // Récupérer l'élément de format de fichier avec la classe "fileFormat"
-  const fileFormat = document.querySelector(".fileFormat");
-  // Récupérer l'élément de suppression avec la classe "remove"
-  const remove = document.querySelector(".remove");
-  // Ajouter un gestionnaire d'événements "click" à l'élément de suppression
-  remove.addEventListener("click", function (event) {
-    // Appeler la fonction de suppression
-    removeImage();
+async function createWorkWithImage() {
+  const formData = new FormData();
+
+  // Ajoutez les autres données du travail
+  formData.append('title', 'Nouvelle Photo');
+  formData.append('description', 'Une superbe photo prise au coucher du soleil');
+  formData.append('categoryId', 1); // Assurez-vous que ce champ correspond aux exigences de l'API
+
+  // Ajoutez l'image (fichier)
+  const imageFile = document.querySelector('input[type="file"]').files[0];
+  formData.append('image', imageFile);
+  
+  const response = await fetch('http://localhost:5678/api/works', {
+    method: 'POST',
+    body: formData // Envoie le FormData contenant les données du travail et le fichier image
   });
-  // Récupérer le fichier sélectionné par l'utilisateur à partir de l'objet d'événement "e"
-  const file = e.target.files[0];
-  // Vérifier si le type de fichier correspond à une image
-  if (file.type.match("image.*")) {
-    // Vérifier si la taille du fichier est inférieure ou égale à 4 Mo
-    if (file.size <= 4194304) {
-      // Créer un lecteur de fichier
-      let reader = new FileReader();
-      // Lorsque le fichier est chargé avec succès
-      reader.onload = function (event) {
-        // Mettre à jour la source de l'image avec les données du fichier
-        image.src = event.target.result;
-        // Afficher le formulaire d'image
-        imageFormDisplay.style.display = "flex";
-        // Masquer l'icône d'image
-        faimage.style.display = "none";
-        // Masquer le champ de téléchargement de fichier
-        fileUpload.style.display = "none";
-        // Masquer l'élément d'entrée de photo
-        photoInput.style.display = "none";
-        // Masquer l'élément de format de fichier
-        fileFormat.style.display = "none";
-      };
-      // Lire le contenu du fichier en tant que URL de données
-      reader.readAsDataURL(file);
-    } else {
-      // Afficher une alerte si le fichier est trop volumineux
-      alert("Le fichier est de grande taille (max 4 Mo).");
-      // Appeler la fonction de suppression
-      removeImage();
-    }
+
+  if (response.ok) {
+    const createdWork = await response.json();
+    console.log('Work created:', createdWork);
   } else {
-    alert("Le fichier sélectionné n'est pas une image.");
-    removeImage();
+    console.error('Failed to create work:', response.status, response.statusText);
+  }
+}
+
+createWorkWithImage()
+
+document.getElementById('modal-validation').addEventListener('click', createWorkWithImage);
+
+*/
+/*
+async function createWork() {
+  const newWork = {
+    title: 'Nouvelle Photo',
+    description: 'Une superbe photo prise au coucher du soleil',
+    imageUrl: 'http://example.com/photo.jpg',
+    categoryId: 1 // Assurez-vous que ce champ correspond aux exigences de l'API
+  };
+
+  const response = await fetch('http://localhost:5678/api/works', {
+    method: 'POST', // Spécifie que la méthode est POST
+    headers: {
+      'Content-Type': 'application/json' // Indique que les données sont au format JSON
+    },
+    body: JSON.stringify(newWork) // Convertit l'objet JavaScript en chaîne JSON
+  });
+
+  if (response.ok) {
+    const createdWork = await response.json();
+    console.log('Work created:', createdWork);
+  } else {
+    console.error('Failed to create work:', response.status, response.statusText);
   }
 }
 */
-uploadNewWorks();
+///createWork();
 
 
 
-
-
-
-
-
-
-
-
-
-/*const windowForNewImga=document.querySelector
-const formModal=document.getElementById("form-modal");
-const figure = document.createElement("figure");
-
-////recupérer le formilaire envoie
-async function upload(work){
-
-console.log("inserer une image");
-
-///confirmer l'ajout
-if (!validateForm()) {
-  alert("Veuillez remplir tous les champs !");
-
-}else{ console.log("ajout image")};
-}
-*/
-
-
-  
 ///Ajout de photo
 
 
@@ -529,7 +459,7 @@ document.querySelector(".modal-form").addEventListener("submit", function(e) {
   if (!validateForm()) {
     alert("Veuillez remplir tous les champs !");
 
-  }else{ "ajjout image")
+  }else{
     // Si le formulaire est valide, préparer les données pour l'envoi
     const file = imageInput.files[0]; // Récupérer le fichier d'image sélectionné par l'utilisateur
     const formData = new FormData();// Créer un objet FormData pour stocker les données du formulaire
@@ -576,4 +506,8 @@ document.querySelector(".modal-form").addEventListener("submit", function(e) {
     
   });
 
+
+
 */
+
+
