@@ -170,6 +170,9 @@ border-radius: 5px;
 background-color:#1D6154; ;
 color:white;
 }
+
+
+  
 .modal-two h3{
 text-align: center;
 font-size: 18px;
@@ -188,37 +191,10 @@ padding: 0px 90px 0px 90px;
   background-color: inherit;
   }
 
-.window-add{
-  padding: 50px;
-  border-radius: 5px;
-  background-color:#E8F1F6;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  }
 
 
-.window-add i {
-  color:#CBD6DC;
-  font-size: 60px;
-  text-align: center;
-}
 
-  .btn-add{
-  margin:10px 100px 10px 100px;
-  padding: 10px 20px 10px 20px;
-  border: none;
-  border-radius: 50px;
-  background-color:#CBD6DC;
-  color:#306685;
-  font-size: 15px;
-  }
 
-  .window-add p {
-  text-align: center;
-  font-weight: 100;
-  font-size: 12px;
-  }
 
   .upload-form{
   display: flex;
@@ -234,7 +210,7 @@ padding: 0px 90px 0px 90px;
 	}
 	
 	.modal-two input {
-		height: 50px;
+		height: 40px;
 		font-size: 1.2em;
 		border: none;
 		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -245,12 +221,11 @@ padding: 0px 90px 0px 90px;
 
   .modal-two select {
   border: none;
+  height: 40px;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
   }
 
-  .modal-two option {
-    height: 30px;
-    }
+
  .modal-two  textarea {
 		border: none;
 		box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -263,7 +238,6 @@ padding: 0px 90px 0px 90px;
 #modal-validation{
 border: none;
 color: rgb(255, 255, 255);
-
 right: 40px;
 left: 40px;
 bottom: 10px;
@@ -276,6 +250,42 @@ padding: 7px;
     color: white
     }
   
+  .btn-upload {
+    background: #CBD6DC;
+    border-radius: 50px;
+    text-align: center;
+    color: #306685;
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 173px;
+    height: 36px;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: none;
+    }
+
+    .file-upload {
+      display: none;
+      background: #CBD6DC;
+      border-radius: 50px;
+      text-align: center;
+      color: #306685;
+      font-family: Work Sans;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      width: 173px;
+      height: 36px;
+      flex-shrink: 0;
+      cursor: pointer;
+      border: none;
+    }
+  
+    
   .select-photo {
     background: #E8F1F7;
     border-radius: 3px;
@@ -306,7 +316,7 @@ padding: 7px;
     margin-top: 15px;
   
   }
-  
+
   .imageFormDisplay{
     display: none;
     justify-content: center;
@@ -321,24 +331,9 @@ padding: 7px;
     top: 5px;
     right: 5px;
   }
-  
-  .file-upload {
-    background: #CBD6DC;
-    border-radius: 50px;
-    text-align: center;
-    color: #306685;
-    font-family: Work Sans;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    width: 173px;
-    height: 36px;
-    flex-shrink: 0;
-    cursor: pointer;
-    border: none;
-  }
-  
+
+
+
   .jpg,.jpeg, .png, .webp  {
     color: #444;
     text-align: center;
