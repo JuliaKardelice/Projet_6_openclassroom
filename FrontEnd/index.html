@@ -102,14 +102,12 @@
 				<form class="modal-form">
 					<div class="select-photo">
 						<div class="imageFormDisplay">
-							<img id="imgPreview" src="./assets/images/abajour-tahina.png" alt="imagePreview">
-							<div class="remove"> <i class="fa-solid fa-xmark"> </i></div>
+							<img class="image-preview" id="imgPreview" src="" alt="imagePreview">
 						</div>
 						
-						<i class="fa-sharp fa-regular fa-image"></i>
-						<button class="btn-upload">+ Ajouter photo</button>
-						<input class="file-upload" value="+ Ajouter photo"> 
-						<input id="photo-input" type="file" name="photo-input" accept=".jpg, .jpeg, .png, .webp" > 
+						<i id="iconPreview" class="fa-sharp fa-regular fa-image"></i>
+						<label for="photo-input" class="file-upload">+ Ajout photo </label> 
+						<input id="photo-input" type="file" name="photo-input" style="display: none;"> 
 						<p class = "fileFormat">jpg, png : 4mo max</p>	
 					</div>
 					
