@@ -39,7 +39,7 @@ export const createFigureWork = (work) => {
     sectionGallery.innerHTML = ''; // Vider la galerie avant d'ajouter les travaux
 
     allWorks.forEach(work => {
-      const figure = createFigureWork(work);
+      const figure = createFigureWork(work); /// sans le document. ?
       sectionGallery.appendChild(figure);
       figure.addEventListener('click', () => console.log(work));
     });
@@ -47,7 +47,7 @@ export const createFigureWork = (work) => {
     
     
   } catch (error) {
-    console.error(`Erreur lors de l'affichage des travaux : ${error.message || error}`);
+    console.error(`Erreur lors de l'affichage des travaux : ${error.message || error}`);  /// erreur contenue dans l'API soit erreur 500 et erreur message "unexpec error"
   }
 };
 
@@ -105,7 +105,7 @@ const filterdWorksByCategory = async (categoryId) => {
     const works = await response.json();
     sectionGallery.innerHTML = ''; // Vider la galerie avant de la remplir à nouveau
 
-    const filteredWorks = categoryId ? works.filter(work => work.categoryId === categoryId) : works;
+    const filteredWorks = categoryId ? works.filter(work => work.categoryId === categoryId) : works; /// Jamais vu cette syntaxe
 
     filteredWorks.forEach(work => {
       const figure = createFigureWork(work);
@@ -134,7 +134,7 @@ logOut.addEventListener("click", () => {
   window.location.href = "index.html";
 });
 
-// Vérifier la connexion
+// Vérifier la connexion 
 const checkConnection = () => {
   if (localStorage.getItem('token')) {
     console.log("je suis connectée");
@@ -160,3 +160,4 @@ const checkConnection = () => {
 }
 checkConnection();
 
+///Pourquoi pas asynchrone ?

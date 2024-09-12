@@ -123,6 +123,7 @@ const deleteWork = async (url) => {
         console.error(" Error while deleting", error) ////suppression n'a pas marché à cause telle erreure
 
     }
+    //eviter les doublons
     sectionGallery.innerHTML = ""; // Vider la galerie avant d'ajouter les travaux
     displayWorksMainGallery();
     modal.style.display = "none";//fermer la modale
@@ -152,7 +153,7 @@ closeModal();//Fermer la modale en cliquant en dehors de la modale
 btnAddPhoto.addEventListener('click', () => {
     modalTwo.style.display = 'block';
     modalOne.style.display = 'none';
-    checkFormValidity();
+    checkFormValidity(); ///vérifier que le forumulaire est valide
     resetFormInputs();
     galleryModal.innerHTML = ''; //// ceci me permet de vider la galerie
 })
@@ -322,6 +323,7 @@ fileInput.addEventListener("change", checkFormValidity);
 titleInput.addEventListener("input", checkFormValidity);//input car on veut que l'utilisateur tape quelque chose
 selectCategory.addEventListener("change", checkFormValidity);//On utilise un changement car on veut que l'utilisateur choisisse une catégorie
 
+// Derniere fonction
 const resetFormInputs = () => { 
     titleInput.value = "";
     fileInput.value = "";
