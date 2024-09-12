@@ -5,7 +5,8 @@ const galleryModal = document.querySelector('.gallery-modal');
 // Travaux
 
 async function showWorks(){
-  const response = await fetch('http://localhost:5678/api/works');
+  const response = await fetch('http://localhost:5678/api/works'
+);
   const works = await response.json();
 
   works.forEach(work => {
@@ -21,6 +22,9 @@ async function showWorks(){
     figure.appendChild(img);
     figure.appendChild(figcaption);
     sectionGallery.appendChild(figure);
+
+    figure.addEventListener('click',()=>{console.log(work)}
+    );
     
   });
 
@@ -128,6 +132,8 @@ if(localStorage.getItem('token')){
 } 
 else {
   showCategories();
+  console.log("Je ne suis pas connectée");
+  
   logOut.style.display = "none";
   console.log("je suis deconnectée");
   admin.style.display = "none";

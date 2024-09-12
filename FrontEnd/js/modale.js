@@ -15,6 +15,9 @@ const imgPreview = document.getElementById("imgPreview");
 const addPhoto = document.querySelector(".file-upload");
 const fileFormat=document.querySelector(".fileFormat")
 const iconPreview=document.getElementById("iconPreview");
+const selectCategory=document.querySelector(".select")
+const confirmBtn=document.getElementById("validerButton");
+
 
   async function openModal() {
     modalOne.style.display = 'block';
@@ -124,12 +127,14 @@ btnAddPhoto.addEventListener('click', () => {
 btnBack.addEventListener('click', () => {
     modalTwo.style.display = 'none';
     modalOne.style.display = 'block';
-    openModal()  ///revenir à la gallery de base
+    openModal()  ///revenir à la premiere modale
 
 
    
 });
 
+
+///FORMULAIRE
 
 
 ///gerer ajout de la photo ou le chargement de l'image
@@ -138,6 +143,7 @@ const file = event.target.files[0];
 const EXTENSTIONACCEPTED = ["jpg","png"];
 const fileName = file.name;
 const extension = fileName.split(".").pop().toLowerCase();   
+console.log(file);
 
 if(file && file.size < 4 * 1024 * 1024 && EXTENSTIONACCEPTED.includes(extension)){
 const reader = new FileReader() ///new 
@@ -149,6 +155,8 @@ reader.onload = (e)=>{
   fileFormat.style.display="none";
 
   
+
+  
 }
 reader.readAsDataURL(file)
 }else{
@@ -156,4 +164,84 @@ reader.readAsDataURL(file)
 alert("L'image n'a pas été chargée");
 }
 
+});
+
+
+let newTitle=document.getElementById("new-title").value; ///titre formulaire
+///charger catégories
+
+const getApiCategories=async ()=>{
+
+    const response = await fetch('http://localhost:5678/api/categories')
+    const categories = await response.json();
+    console.log(categories);
+    
+    
+try {
+    const optionEmpty=document.createElement('option');
+    optionEmpty.innerText="";
+    selectCategory.appendChild(optionEmpty);
+  
+    categories.forEach(categorie =>{
+        
+
+        const option = document.createElement('option');
+        option.value = categorie.id;
+        option.textContent = categorie.name;
+        selectCategory.appendChild(option);
 })
+}
+catch (error) {
+    console.error("Impossible de charger les catéogires"
+    ) ////suprression n'a pas marché à cause telle erreure
+      
+    }
+}
+getApiCategories();
+
+
+const sendNewWork = ()=>{
+    if (!newTitletitle || !categories || !file) {
+        event.preventDefault(); // Prevent form submission
+        errorMessage.textContent = 'Veuillez remplir tous les champs et ajouter une photo.';
+}
+    try{
+
+    }
+    catch (error){
+    console.log("Erreur lors de l'envoi du formulaire");
+    }
+
+}
+
+/** let response = await fetch(urlCatetegory,{
+        method: "GET",
+        headers: {
+        "Authorization" :`Bearer ${token}`,
+        "Accept":"application/json"
+        }
+        }); */
+
+
+confirmBtn.addEventListener('submit',()=>{
+    fetch('http://localhost:5678/api/post_works', {
+        method: 'POST',
+        body: formData,
+        })
+        .then(response => response.json()
+    )
+        .then(data => console.log(data)
+            )
+        .catch(error => console.error('Erreur:', error));
+
+})
+
+const img = document.createElement('img');
+const figcaption = document.createElement('figcaption');
+figcaption.innerText=newTitle;
+console.log(newTitle);
+const figure = document.createElement('figure');
+figure.appendChild(img);
+figure.appendChild(figcaption);
+sectionGallery.appendChild(figure);
+
