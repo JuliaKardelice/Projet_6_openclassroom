@@ -2,7 +2,7 @@ import { openModalWithWorksGallery } from './modale.js';
 
 
 const filtres = document.querySelector('.filtres');
-export const sectionGallery = document.querySelector(".gallery");
+export const sectionGallery = document.querySelector(".gallery"); // pour mettre dans la modale
 const galleryModal = document.querySelector('.gallery-modal');
 
 // Travaux
@@ -41,7 +41,8 @@ export const createFigureWork = (work) => {
     allWorks.forEach(work => {
       const figure = createFigureWork(work); /// sans le document. ?
       sectionGallery.appendChild(figure);
-      figure.addEventListener('click', () => console.log(work));
+      figure.addEventListener('click', () => console.log(work.title, work.category)); /// test au click
+
     });
 
     
@@ -104,7 +105,7 @@ const filterdWorksByCategory = async (categoryId) => {
 
     const works = await response.json();
     sectionGallery.innerHTML = ''; // Vider la galerie avant de la remplir à nouveau
-
+    ///methode ternaire
     const filteredWorks = categoryId ? works.filter(work => work.categoryId === categoryId) : works; /// Jamais vu cette syntaxe
 
     filteredWorks.forEach(work => {

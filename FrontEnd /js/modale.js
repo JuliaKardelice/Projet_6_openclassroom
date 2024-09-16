@@ -91,6 +91,8 @@ const displayGalleryModalWorks = (work) => {
         figureWorkModal.btnDeletePhoto.addEventListener('click', async () => {
             await deleteWork(url);
         });
+      
+        
     } catch (error) {
         console.error(`Erreur lors de l'affichage des travaux dans la modale : ${error.message || error}`);
     }
@@ -114,15 +116,22 @@ const deleteWork = async (url) => {
                 "Authorization": `Bearer ${token}`,
                 "Accept": "application/json"
             }
-        })
+        }
+       
+        
+    )
+    ///Si la reponse n'est pas correcte lance une erreur avec un status associé
         if (!response.ok) {
             throw new Error(`error http ${response.status}`)
         }
+    
+    ///reponse non ok
 
     } catch (error) {
         console.error(" Error while deleting", error) ////suppression n'a pas marché à cause telle erreure
 
     }
+
     //eviter les doublons
     sectionGallery.innerHTML = ""; // Vider la galerie avant d'ajouter les travaux
     displayWorksMainGallery();
@@ -186,6 +195,7 @@ fileInput.addEventListener("change", (event) => {
 
         }
         reader.readAsDataURL(file)
+        
     } else {
 
         alert("L'image n'a pas été chargée");
@@ -195,7 +205,7 @@ fileInput.addEventListener("change", (event) => {
 
 
 ///titre formulaire
-///charger catégories
+///charger catégories qui doivent provenir de l'API dans le dropdown categorie
 
 const getApiCategories = async () => {
 
@@ -222,6 +232,7 @@ const getApiCategories = async () => {
 
     }
 }
+
 getApiCategories();
 
 ///Soumission du formulaire
@@ -305,6 +316,7 @@ const sendNewWork = async (token, formData, title) => {
 
 
 // Fonction pour vérifier la validité du formulaire(désactiver et griser le bouton de validation si le formulaire n'est pas valide)
+
 const checkFormValidity = () => {
     const isFileSelected = fileInput.files.length > 0;  // Vérifier si un fichier est sélectionné
     const isTitleFilled = titleInput.value.trim() !== "";  // Vérifier si le titre est rempli
@@ -319,11 +331,14 @@ const checkFormValidity = () => {
 };
 
 // Ajouter des écouteurs d'événements pour vérifier la validité du formulaire lorsque les champs sont modifiés
-fileInput.addEventListener("change", checkFormValidity);
+
+fileInput.addEventListener("change", checkFormValidity); 
 titleInput.addEventListener("input", checkFormValidity);//input car on veut que l'utilisateur tape quelque chose
 selectCategory.addEventListener("change", checkFormValidity);//On utilise un changement car on veut que l'utilisateur choisisse une catégorie
 
-// Derniere fonction
+
+// Derniere fonction pour reinistialiser les entrées du formulaire ainsi que le bouton en diasabled
+
 const resetFormInputs = () => { 
     titleInput.value = "";
     fileInput.value = "";
