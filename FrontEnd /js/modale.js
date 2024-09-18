@@ -90,21 +90,35 @@ const displayGalleryModalWorks = (work) => {
         // Attacher l'événement de suppression au clic sur le bouton de suppression
         figureWorkModal.btnDeletePhoto.addEventListener('click', async () => {
             await deleteWork(url);
-        });
-      
+        });      
         
     } catch (error) {
         console.error(`Erreur lors de l'affichage des travaux dans la modale : ${error.message || error}`);
     }
 }
 
+const closeModal = () => {
+    window.addEventListener('click', (event) => {
+        // Vérifie si l'élément cliqué est l'overlay (ou l'extérieur de la modale)
+        if (event.target === overlay) {
+            console.log("Je suis en dehors de la modale");
+            modal.style.display = "none";
+            overlay.style.display = "none";
+        }
+    });
+}
+
+closeModal();//Fermer la modale en cliquant en dehors de la modale
+
 const deleteWork = async (url) => {
     const token = localStorage.getItem("token");
-    console.log(token)
+    console.log(token);
+
     if (!token) {
         alert("Vous n'êtes pas connecté")
         return ////ARRET SCRIPT
     }
+
     const confirmation = confirm("êtes vous sûr de vouloir supprimer cette photo ?");
     if (!confirmation) {
         return    ///////Si il ne veut pas supprimer
@@ -118,7 +132,7 @@ const deleteWork = async (url) => {
             }
         }
        
-        
+    
     )
     ///Si la reponse n'est pas correcte lance une erreur avec un status associé
         if (!response.ok) {
@@ -139,20 +153,6 @@ const deleteWork = async (url) => {
     overlay.style.display = "none";
 
 }
-
-
-const closeModal = () => {
-    window.addEventListener('click', (event) => {
-        // Vérifie si l'élément cliqué est l'overlay (ou l'extérieur de la modale)
-        if (event.target === overlay) {
-            console.log("Je suis en dehors de la modale");
-            modal.style.display = "none";
-            overlay.style.display = "none";
-        }
-    });
-}
-
-closeModal();//Fermer la modale en cliquant en dehors de la modale
 
 
 
@@ -191,7 +191,6 @@ fileInput.addEventListener("change", (event) => {
             addPhoto.style.display = "none";
             iconPreview.style.display = "none";
             fileFormat.style.display = "none";
-
 
         }
         reader.readAsDataURL(file)
@@ -257,17 +256,22 @@ const upLoadFile = async () => {
     //Ici l'index de la categorie correspond à son id dans la base de données
     const optionId = selectCategory.selectedIndex; // category id
 
+
     console.log("Selected File: ", selectedFile);
     console.log("Title: ", title);
     console.log("Category ID: ", optionId); //  category id
     console.log(selectCategory.value);
+
 
     if (!selectedFile || !title || !optionId) {
         alert("Veuillez remplir tous les champs");
         return; //Arrête le script
     }
 
+    
     const formData = new FormData();
+    console.log("affiche moi",formData);
+    
     formData.append("image", selectedFile); 
     formData.append("title", title);
     //Le back attend un champ "category" et non "categoryId"
@@ -300,6 +304,7 @@ const sendNewWork = async (token, formData, title) => {
 
         const responseData = await response.json()
         console.log("reponse api", responseData);
+        alert("L'image a été ajoutée avec succès");     
 
     } catch (error) {
         console.error("Erreur lors de la connexion", error);
@@ -335,7 +340,6 @@ const checkFormValidity = () => {
 fileInput.addEventListener("change", checkFormValidity); 
 titleInput.addEventListener("input", checkFormValidity);//input car on veut que l'utilisateur tape quelque chose
 selectCategory.addEventListener("change", checkFormValidity);//On utilise un changement car on veut que l'utilisateur choisisse une catégorie
-
 
 // Derniere fonction pour reinistialiser les entrées du formulaire ainsi que le bouton en diasabled
 

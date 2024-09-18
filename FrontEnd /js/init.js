@@ -39,9 +39,10 @@ export const createFigureWork = (work) => {
     sectionGallery.innerHTML = ''; // Vider la galerie avant d'ajouter les travaux
 
     allWorks.forEach(work => {
-      const figure = createFigureWork(work); /// sans le document. ?
-      sectionGallery.appendChild(figure);
-      figure.addEventListener('click', () => console.log(work.title, work.category)); /// test au click
+      const figure = createFigureWork(work);
+      sectionGallery.appendChild(figure);  //inserer dans la figure retouner l26
+      
+      figure.addEventListener('click', () => console.log("element cliqué",work.title, work.category)); /// test au click
 
     });
 
@@ -53,6 +54,7 @@ export const createFigureWork = (work) => {
 };
 
 // Filtres
+
 const showCategories = async () => {
   try {
     const response = await fetch('http://localhost:5678/api/categories');
@@ -106,12 +108,14 @@ const filterdWorksByCategory = async (categoryId) => {
     const works = await response.json();
     sectionGallery.innerHTML = ''; // Vider la galerie avant de la remplir à nouveau
     ///methode ternaire
-    const filteredWorks = categoryId ? works.filter(work => work.categoryId === categoryId) : works; /// Jamais vu cette syntaxe
-
+    const filteredWorks = categoryId ? works.filter(work => work.categoryId === categoryId) : works; /// METHODE TERNAIRE
+    console.log(filteredWorks);
+    
     filteredWorks.forEach(work => {
       const figure = createFigureWork(work);
       sectionGallery.appendChild(figure);
     });
+
   } catch (error) {
     console.error(`Erreur lors du filtrage des travaux : ${error.message || error}`);
   }
@@ -140,9 +144,9 @@ const checkConnection = () => {
   if (localStorage.getItem('token')) {
     console.log("je suis connectée");
     logIn.style.display = "none";
-    admin.innerHTML = "<button class=\"editMode\"> <i class=\"fas fa-pen-to-square\"></i> Mode édition</button";
+    admin.innerHTML = "<button class=\"editMode\"> <i class=\"fas fa-pen-to-square\"></i> Mode édition</button>";
     admin.classList.add("blackLineEdition");
-    mesProjets.insertAdjacentHTML("afterend", "<button class=\"editMode\"> <i class=\"fas fa-pen-to-square\"></i> modifier</button");
+    mesProjets.insertAdjacentHTML("afterend", "<button class=\"editMode\"> <i class=\"fas fa-pen-to-square\"></i> modifier</button>");
 
     const btnModal = document.querySelector("#portfolio .editMode");
 
@@ -161,4 +165,3 @@ const checkConnection = () => {
 }
 checkConnection();
 
-///Pourquoi pas asynchrone ?
