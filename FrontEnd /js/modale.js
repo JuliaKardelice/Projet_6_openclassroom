@@ -19,11 +19,11 @@ const iconPreview = document.getElementById("iconPreview");
 const selectCategory = document.querySelector("#categories")
 const titleInput = document.getElementById("new-title");
 const validerButton = document.getElementById("validerButton");
-
 const galleryModal = document.querySelector('.gallery-modal');
 let form = document.querySelector(".modal-two-content form")
 
 // Fonction pour ouvrir la modale avec la galerie de travaux
+
 export const openModalWithWorksGallery = async () => {
     try {
         // Ouvrir la modale
@@ -58,6 +58,7 @@ export const openModalWithWorksGallery = async () => {
 
 
 //Méthode pour creer la balise figure de la modale avec une icone trash au coin droit
+
 const createFigureWorkModal = (work) => {
     const figure = document.createElement('figure');
     const img = document.createElement('img');
@@ -86,7 +87,6 @@ const displayGalleryModalWorks = (work) => {
         const figureWorkModal = createFigureWorkModal(work);
         galleryModal.appendChild(figureWorkModal.figure);
         let url = `http://localhost:5678/api/works/${work.id}`; // suppression par rapport à l'id du work
-
         // Attacher l'événement de suppression au clic sur le bouton de suppression
         figureWorkModal.btnDeletePhoto.addEventListener('click', async () => {
             await deleteWork(url);
@@ -175,13 +175,14 @@ btnBack.addEventListener('click', () => {
 ///FORMULAIRE
 
 
-///gerer ajout de la photo ou le chargement de l'image
+/// PREVISUALISATION gerer ajout de la photo ou le chargement de l'image
 fileInput.addEventListener("change", (event) => {
     const file = event.target.files[0];
     const EXTENSTIONACCEPTED = ["jpg", "png"];
     const fileName = file.name;
     const extension = fileName.split(".").pop().toLowerCase();
     console.log(file);
+
 
     if (file && file.size < 4 * 1024 * 1024 && EXTENSTIONACCEPTED.includes(extension)) {
         const reader = new FileReader() ///new 
@@ -203,7 +204,7 @@ fileInput.addEventListener("change", (event) => {
 });
 
 
-///titre formulaire
+//CATEGORIE 
 ///charger catégories qui doivent provenir de l'API dans le dropdown categorie
 
 const getApiCategories = async () => {
@@ -235,12 +236,14 @@ const getApiCategories = async () => {
 getApiCategories();
 
 ///Soumission du formulaire
+
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
     await upLoadFile()
 })
 
 
+///UPLOAD
 
 const upLoadFile = async () => {
     const token = localStorage.getItem("token");
@@ -270,15 +273,16 @@ const upLoadFile = async () => {
 
     
     const formData = new FormData();
+
     console.log("affiche moi",formData);
     
     formData.append("image", selectedFile); 
     formData.append("title", title);
     //Le back attend un champ "category" et non "categoryId"
     formData.append("category", optionId);
-
     await sendNewWork(token, formData, title);
 };
+
 
 
 const sendNewWork = async (token, formData, title) => {
@@ -327,7 +331,7 @@ const checkFormValidity = () => {
     const isTitleFilled = titleInput.value.trim() !== "";  // Vérifier si le titre est rempli
     const isCategorySelected = selectCategory.value !== "";  // Vérifier si une catégorie est sélectionnée
 
-    // Activer le bouton de validation si toutes les conditions sont remplies
+    // Activer le bouton de validation (REMPLISSAGE EN VERT ET CLIQUABLE) si toutes les conditions sont remplies
     if (isFileSelected && isTitleFilled && isCategorySelected) {
         validerButton.disabled = false;
     } else {

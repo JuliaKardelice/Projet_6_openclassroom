@@ -53,6 +53,7 @@ export const createFigureWork = (work) => {
   }
 };
 
+
 // Filtres
 
 const showCategories = async () => {
@@ -69,7 +70,7 @@ const showCategories = async () => {
     const btnAll = document.createElement('button');
     btnAll.classList.add('btnAll', 'btnFiltre');
     btnAll.innerText = "Tous";
-
+    
     btnAll.addEventListener('click', async (e) => {
       removeActiveClass();
       btnAll.classList.add('btnFiltre_survol');
@@ -100,6 +101,7 @@ const showCategories = async () => {
 };
 
 // Fonction de filtrage
+
 const filterdWorksByCategory = async (categoryId) => {
   try {
     const response = await fetch('http://localhost:5678/api/works');
@@ -128,6 +130,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
+
 const admin = document.querySelector('.admin');
 const mesProjets = document.querySelector('#portfolio .project');
 const logIn = document.getElementById("login");
@@ -149,13 +152,14 @@ const checkConnection = () => {
     mesProjets.insertAdjacentHTML("afterend", "<button class=\"editMode\"> <i class=\"fas fa-pen-to-square\"></i> modifier</button>");
 
     const btnModal = document.querySelector("#portfolio .editMode");
-
+   
     //Ouvrir la première modale
     btnModal.addEventListener('click', async () => {
       console.log("ouvrons la modale");
       galleryModal.innerHTML = '';
       await openModalWithWorksGallery();
     });
+
   } else {
     showCategories();
     console.log("Je ne suis pas connectée");
