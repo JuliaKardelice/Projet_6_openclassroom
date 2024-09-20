@@ -1,4 +1,7 @@
 const btnSubmit = document.querySelector('.connexionBtn');
+if (localStorage.getItem('token')) {
+    window.location = "index.html";
+}
 
 const loginUser = async (email, password) => {
     try {
@@ -9,7 +12,7 @@ const loginUser = async (email, password) => {
             },
             body: JSON.stringify({ email, password })
         });
-
+        
         if (!response.ok) {
             console.log(response);
             document.querySelector('.error').innerText = 'Email ou mot de passe incorrect.';
@@ -23,6 +26,8 @@ const loginUser = async (email, password) => {
         console.error(`Une erreur s'est produite : ${error.message || error}`);
     }
 };
+
+
 
 btnSubmit.addEventListener('click', (e) => {
     e.preventDefault();
